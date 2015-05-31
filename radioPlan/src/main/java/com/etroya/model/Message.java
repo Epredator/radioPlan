@@ -1,18 +1,24 @@
 package com.etroya.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
  * Created by Adam on 2015-05-31.
  */
+@XmlRootElement
 public class Message {
     private long id;
     private String message;
     private Date created;
     private String author;
 
+    public Message(){
+
+    }
+
     public Message(int i, String s, String author) {
-        this.id =id;
+        this.id =i;
         this.message =s;
         this.author =author;
         this.created = new Date();

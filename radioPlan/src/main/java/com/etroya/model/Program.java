@@ -1,16 +1,31 @@
 package com.etroya.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
  * Created by Adam on 2015-05-31.
  */
+@XmlRootElement
 public class Program {
+
+    public Program(){
+
+    }
+
     private long id;
     private String name;
     private Date startDate;
     private Date endDate;
-    private Date station;
+    private String station;
+
+    public Program(int i, String nameOfProgram, Date startDate, Date endDate, String stationName) {
+        this.id = i;
+        this.name = nameOfProgram;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.station = stationName;
+    }
 
     public long getId() {
         return id;
@@ -44,11 +59,11 @@ public class Program {
         this.endDate = endDate;
     }
 
-    public Date getStation() {
+    public String getStation() {
         return station;
     }
 
-    public void setStation(Date station) {
+    public void setStation(String station) {
         this.station = station;
     }
 

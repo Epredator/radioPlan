@@ -17,10 +17,9 @@ public class MessageResource {
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Message> test(){
+    public List<Message> getMessages(){
         return messageService.getAllMessages();
     }
-
 
     @GET
     @Path("/{messageId}")
@@ -29,11 +28,10 @@ public class MessageResource {
         return messageService.getMessage(id);
     }
 
-
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     public String postMessage(String message){
-        return "Twoja wiadomość: "+ message;
+        return "Twoja wiadomość: " + message;
 
     }
 }

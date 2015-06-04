@@ -3,10 +3,7 @@ package com.etroya.resources;
 import com.etroya.model.Program;
 import com.etroya.service.ProgramService;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -20,8 +17,15 @@ public class ProgramResource {
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Program> getProgram(){
+    public List<Program> getPrograms(){
         return programService.getAllPrograms();
+    }
+
+    @GET
+    @Path("/{programId}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Program getProgram(@PathParam("programId") long id){
+        return programService.getProgram(id);
     }
 
     @POST

@@ -11,15 +11,16 @@ import java.util.Map;
  * Created by Adam on 2015-05-31.
  */
 public class MessageService {
-
-    public MessageService(){
-        Message m1 = new Message(1, "First message", "Epredator");
-        Message m2 = new Message(2, "Secong message", "Saddam");
-    }
     private Map<Long, Message> messages = DatabaseClass.getMessages();
 
+    public MessageService(){
+        messages.put(1L, new Message(1, "First message", "Epredator"));
+        messages.put(2L, new Message(2, "Secong message", "Saddam"));
+    }
+
+
     public List<Message> getAllMessages(){
-        return (ArrayList<Message>) messages.values();
+        return new ArrayList<Message> (messages.values());
     }
 
     public Message getMessage(long id){

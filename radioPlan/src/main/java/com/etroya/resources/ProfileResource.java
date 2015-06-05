@@ -18,14 +18,14 @@ public class ProfileResource {
     ProfileService profileService = new ProfileService();
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Profile> getProfiles(){
         return profileService.getAllProfiles();
     }
 
     @GET
     @Path("/{profileId}")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Profile getProfile(@PathParam("profileId")long id){
         return profileService.getProfile(id);
     }

@@ -1,8 +1,12 @@
 package com.etroya.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by Adam on 2015-06-03.
  */
+
+@XmlRootElement
 public class Profile {
     private long id;
     private String profileName;
@@ -10,7 +14,6 @@ public class Profile {
     private String lastName;
 
     public Profile(){
-
     }
 
     public Profile(long id, String profileName, String firstName, String lastName){

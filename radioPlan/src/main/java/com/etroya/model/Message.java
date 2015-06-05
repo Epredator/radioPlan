@@ -19,17 +19,15 @@ public class Message {
 
     public Message(int i, String s, String author) {
         this.id =i;
-        this.message =s;
-        this.author =author;
+        this.message = s;
+        this.author = author;
         this.created = new Date();
-
     }
 
 
     public long getId() {
         return id;
     }
-
 
     public void setId(long id) {
         this.id = id;

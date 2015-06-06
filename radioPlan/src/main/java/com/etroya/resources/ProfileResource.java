@@ -11,27 +11,39 @@ import java.util.List;
  * Created by Adam on 2015-06-05.
  */
 @Path("/profiles")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class ProfileResource {
     ProfileService profileService = new ProfileService();
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public List<Profile> getProfiles(){
         return profileService.getAllProfiles();
     }
 
+    @POST
+    public Profile addProfile(Profile profile){
+        profileService.addProfile(profile);
+        return profile;
+    }
+
+    @DELETE
+    @Path("/{profileId}")
+    public void deleteProfile(@PathParam("profileId") long id){
+        profileService.removeProfile(id);
+    }
+
     @GET
     @Path("/{profileId}")
-    @Produces(MediaType.APPLICATION_JSON)
     public Profile getProfile(@PathParam("profileId")long id){
         return profileService.getProfile(id);
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Profile addProfile(Profile profile){
-        profileService.addProfile(profile);
+    @PUT
+    @Path("/{profileId}")
+    public Profile updateProfile(@PathParam("profileId") long id, Profile profile){
+        profile.setId(id);
+        profileService.updateProfile(profile);
         return profile;
     }
 }

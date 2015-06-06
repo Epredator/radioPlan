@@ -16,20 +16,20 @@ public class ProgramResource {
     ProgramService programService = new ProgramService();
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Program> getPrograms(){
         return programService.getAllPrograms();
     }
 
     @GET
     @Path("/{programId}")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Program getProgram(@PathParam("programId") long id){
         return programService.getProgram(id);
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public String postProgram(String programName){
         return "Nazwa programu: "+programName;
     }

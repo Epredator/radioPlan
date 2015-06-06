@@ -3,10 +3,7 @@ package com.etroya.resources;
 import com.etroya.model.Profile;
 import com.etroya.service.ProfileService;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -28,6 +25,14 @@ public class ProfileResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Profile getProfile(@PathParam("profileId")long id){
         return profileService.getProfile(id);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Profile addProfile(Profile profile){
+        profileService.addProfile(profile);
+        return profile;
     }
 }
 

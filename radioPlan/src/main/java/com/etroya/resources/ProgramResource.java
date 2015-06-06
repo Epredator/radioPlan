@@ -3,6 +3,7 @@ package com.etroya.resources;
 import com.etroya.model.Program;
 import com.etroya.service.ProgramService;
 
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -29,9 +30,11 @@ public class ProgramResource {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String postProgram(String programName){
-        return "Nazwa programu: "+programName;
+    public Program addProgram(Program program){
+        programService.addProgram(program);
+        return program;
     }
 
 }

@@ -28,21 +28,21 @@ public class ProfileResource {
     }
 
     @DELETE
-    @Path("/{profileId}")
-    public void deleteProfile(@PathParam("profileId") long id){
-        profileService.removeProfile(id);
+    @Path("/{profileName}")
+    public void deleteProfile(@PathParam("profileName") String profileName){
+        profileService.removeProfile(profileName);
     }
 
     @GET
-    @Path("/{profileId}")
-    public Profile getProfile(@PathParam("profileId")long id){
-        return profileService.getProfile(id);
+    @Path("/{profileName}")
+    public Profile getProfile(@PathParam("profileName")String profileName){
+        return profileService.getProfile(profileName);
     }
 
     @PUT
-    @Path("/{profileId}")
-    public Profile updateProfile(@PathParam("profileId") long id, Profile profile){
-        profile.setId(id);
+    @Path("/{profileName}")
+    public Profile updateProfile(@PathParam("profileName") String profileName, Profile profile){
+        profile.setProfileName(profileName);
         profileService.updateProfile(profile);
         return profile;
     }

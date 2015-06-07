@@ -11,37 +11,37 @@ import java.util.Map;
  * Created by Adam on 2015-06-05.
  */
 public class ProfileService {
-    private Map<Long, Profile> profiles = DatabaseClass.getProfiles();
+    private Map<String, Profile> profiles = DatabaseClass.getProfiles();
 
     public ProfileService(){
-        profiles.put(1L, new Profile(1, "Epredator", "Adam", "Więcławski"));
-        profiles.put(2L, new Profile(2, "Saddam", "Bożysław", "Zabłoński"));
+        profiles.put("Epredator", new Profile(1, "Epredator", "Adam", "Więcławski"));
+        profiles.put("Saddam", new Profile(2, "Saddam", "Bożysław", "Zabłoński"));
     }
 
     public List<Profile> getAllProfiles(){
         return new ArrayList<Profile>(profiles.values());
     }
 
-    public Profile getProfile(long id){
-        return profiles.get(id);
+    public Profile getProfile(String profileName){
+        return profiles.get(profileName);
     }
 
     public Profile addProfile(Profile profile){
         profile.setId(profiles.size()+1);
-        profiles.put(profile.getId(), profile);
+        profiles.put(profile.getProfileName(), profile);
         return profile;
     }
 
     public Profile updateProfile(Profile profile){
-        if(profile.getId() <= 0){
+        if(profile.getProfileName().isEmpty()){
             return null;
         }else{
-            profiles.put(profile.getId(), profile);
+            profiles.put(profile.getProfileName(), profile);
             return profile;
         }
     }
 
-    public Profile removeProfile(long id){
-        return profiles.remove(id);
+    public Profile removeProfile(String profileName){
+        return profiles.remove(profileName);
     }
 }

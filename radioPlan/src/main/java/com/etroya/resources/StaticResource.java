@@ -1,9 +1,6 @@
 package com.etroya.resources;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -19,6 +16,25 @@ public class StaticResource {
     @Path("annotations")
     public String getParamsFrommAnnotations(){
         return"TEst";
+
+    }
+
+    @GET
+    @Path("matrix")
+    public String getParamsFromMatrixParam(@MatrixParam("param") String matrixParam){
+        return"Matrix Param: " + matrixParam;
+    }
+
+    @GET
+    @Path("header")
+    public String getParamsFromHeaderParam(@HeaderParam("headerValue") String header){
+        return "Header param: " + header;
+    }
+
+    @GET
+    @Path("cookie")
+    public String getParamsFromCookieValues(@CookieParam("cookie") String cookieVal){
+        return "Cookie value: "+ cookieVal;
 
     }
 }

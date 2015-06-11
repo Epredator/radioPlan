@@ -52,4 +52,9 @@ public class MessageResource {
         messageService.updateMessage(message);
         return message;
     }
+
+    @Path("/{messageId}/comments")
+    public CommentResource getCommentResource(){
+        return new CommentResource();
+    }
 }

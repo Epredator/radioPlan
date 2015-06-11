@@ -1,6 +1,7 @@
 package com.etroya.resources;
 
 import com.etroya.model.Message;
+import com.etroya.resources.beans.MessageFilterBean;
 import com.etroya.service.MessageService;
 
 import javax.ws.rs.*;
@@ -18,13 +19,11 @@ public class MessageResource {
     MessageService messageService = new MessageService();
 
     @GET
-    public List<Message> getMessages(@QueryParam("year") int year,
-                                     @QueryParam("start") int start,
-                                     @QueryParam("size") int size){
-        if (year > 0)
-            return messageService.getAllMessagesForYear(year);
-        if (start>=0 && size>=0)
-            return messageService.getAllMessagesPaginated(start, size);
+    public List<Message> getMessages(@BeanParam MessageFilterBean filterBean){
+        if (filterBean.getYear() > 0)
+            return messageService.getAllMessagesForYear(filterBean.getYear());
+        if (filterBean.getStart()>=0 && filterBean.getSize()>=0)
+            return messageService.getAllMessagesPaginated(filterBean.getStart(), filterBean.getSize());
         return messageService.getAllMessages();
     }
 

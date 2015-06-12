@@ -1,5 +1,6 @@
 package com.etroya.database;
 
+import com.etroya.model.Comment;
 import com.etroya.model.Message;
 import com.etroya.model.Profile;
 import com.etroya.model.Program;
@@ -14,6 +15,7 @@ public class DatabaseClass {
     private static Map<Long, Message> messages = new HashMap<>();
     private static Map<String, Profile> profiles = new HashMap<>();
     private static Map<Long, Program> programs = new HashMap<>();
+    private static Map<Long, Comment> comments = new HashMap<>();
 
     public static Map<Long, Message> getMessages() {
         return messages;
@@ -25,5 +27,8 @@ public class DatabaseClass {
 
     public static Map<Long, Program> getPrograms() {
         return programs;
+    }
+    public static Map<Long, Comment> getComments() {
+        return comments;
     }
 }

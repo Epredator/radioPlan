@@ -1,5 +1,7 @@
 package com.etroya.resources;
 
+import com.etroya.service.CommentService;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -10,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CommentResource {
+    private CommentService commentService = new CommentService();
 
     @GET
     public String getComment(){

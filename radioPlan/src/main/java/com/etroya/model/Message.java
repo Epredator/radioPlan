@@ -1,7 +1,10 @@
 package com.etroya.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Adam on 2015-05-31.
@@ -12,6 +15,7 @@ public class Message {
     private String message;
     private Date created;
     private String author;
+    private Map<Long, Comment> comments = new HashMap<>();
 
     public Message(){
 
@@ -55,5 +59,14 @@ public class Message {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    @XmlTransient
+    public Map<Long, Comment> getComments(){
+        return comments;
+    }
+
+    public void setComments(Map<Long, Comment> comments){
+        this.comments = comments;
     }
 }

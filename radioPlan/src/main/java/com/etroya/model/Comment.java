@@ -11,6 +11,10 @@ public class Comment {
     private Date created;
     private String author;
 
+    public Comment(){
+
+    }
+
     public long getId() {
         return id;
     }
@@ -41,10 +45,6 @@ public class Comment {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public Comment(){
-
     }
 
     public Comment(int id, String message, String author){

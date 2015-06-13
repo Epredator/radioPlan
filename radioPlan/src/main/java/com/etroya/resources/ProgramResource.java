@@ -19,7 +19,11 @@ public class ProgramResource {
     ProgramService programService = new ProgramService();
 
     @GET
-    public List<Program> getPrograms(){
+    public List<Program> getPrograms(@QueryParam("start") int start,
+                                     @QueryParam("size") int size){
+        if(start >= 0 && size >= 0){
+            return programService.getAllProgramsPaginated(start, size);
+        }
         return programService.getAllPrograms();
     }
 

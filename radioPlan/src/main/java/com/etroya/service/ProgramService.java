@@ -25,6 +25,11 @@ public class ProgramService {
        return new ArrayList<Program>(programs.values());
     }
 
+    public List<Program> getAllProgramsPaginated(int start, int size){
+        List<Program> list = new ArrayList<>(programs.values());
+        return list.subList(start, start+size);
+    }
+
     public Program getProgram(long id) {
         return programs.get(id);
     }

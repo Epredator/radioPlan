@@ -1,34 +1,31 @@
 package com.etroya.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Adam on 2015-05-31.
+ * Created by Adam on 2015-06-13.
  */
-@XmlRootElement
-public class Program {
-
+public class Station {
     private long id;
+
     private String name;
     private Date startDate;
     private Date endDate;
-    private String station;
+    private Map<Long, Program> programs = new HashMap<>();
     private Map<Long, Comment> comments = new HashMap<>();
 
-    public Program(){
+    public Station(){
 
     }
 
-    public Program(int i, String nameOfProgram, Date startDate, Date endDate, String stationName) {
-        this.id = i;
-        this.name = nameOfProgram;
+    public Station(long id, String nameOfStation, Date startDate, Date endDate){
+        this.id = id;
+        this.name = nameOfStation;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.station = stationName;
     }
 
     public long getId() {
@@ -63,15 +60,15 @@ public class Program {
         this.endDate = endDate;
     }
 
-    public String getStation() {
-        return station;
-    }
-
-    public void setStation(String station) {
-        this.station = station;
-    }
-
     @XmlTransient
+    public Map<Long, Program> getPrograms(){
+        return programs;
+    }
+
+    public void setPrograms(Map<Long, Program> programs){
+        this.programs = programs;
+    }
+
     public Map<Long, Comment> getComments(){
         return comments;
     }
@@ -79,5 +76,4 @@ public class Program {
     public void setComments(Map<Long, Comment> comments){
         this.comments = comments;
     }
-
 }

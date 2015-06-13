@@ -53,4 +53,9 @@ public class ProgramResource {
         return program;
     }
 
+    @Path("/{programId}/comments")
+    public CommentResource getCommentResource(){
+        return new CommentResource();
+    }
+
 }

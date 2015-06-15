@@ -5,7 +5,12 @@ import com.etroya.resources.beans.MessageFilterBean;
 import com.etroya.service.MessageService;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -28,9 +33,14 @@ public class MessageResource {
     }
 
     @POST
-    public Message addMessage(Message message){
-        messageService.addMessage(message);
-        return message;
+    public Response addMessage(Message message, @Context UriInfo uriInfo) throws URISyntaxException {
+        Message newMessage = messageService.addMessage(message);;
+        String newId = String.valueOf(newMessage.getId());
+        URI url = uriInfo.getAbsolutePathBuilder().path(newId).build();
+        return  Response.status(Response.Status.CREATED)
+                .location(url)
+                .entity(newMessage)
+                .build();
     }
 
     @DELETE

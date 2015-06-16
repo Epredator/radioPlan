@@ -2,8 +2,11 @@ package com.etroya.service;
 
 import com.etroya.database.DatabaseClass;
 import com.etroya.model.Comment;
+import com.etroya.model.ErrorMessage;
 import com.etroya.model.Message;
 
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -15,10 +18,6 @@ import java.util.Map;
 public class CommentService {
     private Map<Long, Message> messages = DatabaseClass.getMessages();
 
-//    public CommentService(){
-//        comments.put(1L, new Comment(1, "First comment", "Epredator"));
-//        comments.put(2L, new Comment(2, "Second comment", "Epredator2"));
-//    }
 
     public List<Comment> getAllComments(long messageId){
        Map<Long, Comment> comments = messages.get(messageId).getComments();
@@ -42,7 +41,18 @@ public class CommentService {
 //    }
 
     public Comment getComment(long messageId, long commentId){
+        Message msg = messages.get(messageId);
+        ErrorMessage errorMessage = new ErrorMessage("Not found", 404, "http://etroya.pl");
+        Response resp = Response.status(Response.Status.NOT_FOUND)
+                .entity(errorMessage).build();
+        if(msg == null){
+            throw new WebApplicationException(resp);
+        }
         Map<Long, Comment> comments = messages.get(messageId).getComments();
+        Comment comm = comments.get(commentId);
+        if(comm == null){
+            throw new WebApplicationException(resp);
+        }
         return comments.get(commentId);
     }
 

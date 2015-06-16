@@ -1,5 +1,6 @@
 package com.etroya.resources;
 
+import com.etroya.exception.DataNotFoundException;
 import com.etroya.model.Message;
 import com.etroya.resources.beans.MessageFilterBean;
 import com.etroya.service.MessageService;
@@ -52,6 +53,10 @@ public class MessageResource {
     @GET
     @Path("/{messageId}")
     public Message getMessage(@PathParam("messageId") long id){
+        Message message = messageService.getMessage(id);
+        if (message == null){
+            throw new DataNotFoundException("Message with id: " + id + " doesn't found.");
+        }
         return messageService.getMessage(id);
     }
 

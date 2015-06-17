@@ -5,6 +5,7 @@ import com.etroya.model.Comment;
 import com.etroya.model.ErrorMessage;
 import com.etroya.model.Message;
 
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class CommentService {
         Map<Long, Comment> comments = messages.get(messageId).getComments();
         Comment comm = comments.get(commentId);
         if(comm == null){
-            throw new WebApplicationException(resp);
+            throw new NotFoundException(resp);
         }
         return comments.get(commentId);
     }

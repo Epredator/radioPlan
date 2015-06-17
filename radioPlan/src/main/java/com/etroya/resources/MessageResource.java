@@ -52,12 +52,20 @@ public class MessageResource {
 
     @GET
     @Path("/{messageId}")
-    public Message getMessage(@PathParam("messageId") long id){
+    public Message getMessage(@PathParam("messageId") long id, @Context UriInfo uriInfo){
         Message message = messageService.getMessage(id);
+        String uri = getUriForSelf(uriInfo, message);
         if (message == null){
             throw new DataNotFoundException("Message with id: " + id + " doesn't found.");
         }
-        return messageService.getMessage(id);
+        message.addLink(uri, "self");
+        return message;
+    }
+
+    private String getUriForSelf(@Context UriInfo uriInfo, Message message) {
+        return uriInfo.getBaseUriBuilder()
+            .path(MessageResource.class)
+            .path(Long.toString(message.getId())).toString();
     }
 
     @PUT

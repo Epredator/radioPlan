@@ -54,18 +54,37 @@ public class MessageResource {
     @Path("/{messageId}")
     public Message getMessage(@PathParam("messageId") long id, @Context UriInfo uriInfo){
         Message message = messageService.getMessage(id);
-        String uri = getUriForSelf(uriInfo, message);
         if (message == null){
             throw new DataNotFoundException("Message with id: " + id + " doesn't found.");
         }
-        message.addLink(uri, "self");
+        message.addLink(getUriForSelf(uriInfo, message), "self");
+        message.addLink(getUriForProfile(uriInfo, message), "profile");
+        message.addLink(getUriForComments(uriInfo, message), "profile");
         return message;
+    }
+
+    private String getUriForComments(UriInfo uriInfo, Message message) {
+        return uriInfo.getBaseUriBuilder()
+                .path(MessageResource.class)
+                .path(MessageResource.class, "getCommentResource")
+                .path(CommentResource.class)
+                .resolveTemplate("messageId", message.getId())
+                .build()
+                .toString();
+    }
+
+    private String getUriForProfile(UriInfo uriInfo, Message message) {
+        return uriInfo.getBaseUriBuilder()
+                .path(ProfileResource.class)
+                .path(message.getAuthor())
+                .build()
+                .toString();
     }
 
     private String getUriForSelf(@Context UriInfo uriInfo, Message message) {
         return uriInfo.getBaseUriBuilder()
-            .path(MessageResource.class)
-            .path(Long.toString(message.getId())).toString();
+                .path(MessageResource.class)
+                .path(Long.toString(message.getId())).toString();
     }
 
     @PUT

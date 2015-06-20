@@ -3,18 +3,29 @@ package com.etroya.hibernate.util;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  * Created by Adam on 2015-06-20.
  */
 public class HibernateUtil {
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static SessionFactory sessionFactory;
 
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
-            return new Configuration().configure().buildSessionFactory(
-                    new StandardServiceRegistryBuilder().build() );
+            Configuration configuration = new Configuration();
+            configuration.configure("hibernate.cfg.xml");
+            System.out.println("Hibernate Configuration loaded");
+
+            //apply configuration property settings to StandardServiceRegistryBuilder
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+            System.out.println("Hibernate serviceRegistry created");
+
+            SessionFactory sessionFactory = configuration
+                    .buildSessionFactory(serviceRegistry);
+
+            return sessionFactory;
         }
         catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
@@ -24,7 +35,8 @@ public class HibernateUtil {
     }
 
     public static SessionFactory getSessionFactory() {
+        if(sessionFactory == null) sessionFactory = buildSessionFactory();
         return sessionFactory;
     }
-
 }
+

@@ -1,11 +1,15 @@
 package com.etroya.hibernate.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * Created by Adam on 2015-06-20.
  */
+@Entity
 public class Event {
+    @Id
     private Long id;
 
     private String title;
@@ -17,7 +21,7 @@ public class Event {
         return id;
     }
 
-    private void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,4 +1,4 @@
-package com.etroya.hibernate.domain;
+package com.etroya.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

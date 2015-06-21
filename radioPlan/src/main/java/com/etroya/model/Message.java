@@ -1,5 +1,7 @@
 package com.etroya.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.*;
@@ -7,8 +9,10 @@ import java.util.*;
 /**
  * Created by Adam on 2015-05-31.
  */
+@Entity
 @XmlRootElement
 public class Message {
+    @Id
     private long id;
     private String message;
     private Date created;

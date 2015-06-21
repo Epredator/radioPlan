@@ -1,5 +1,8 @@
 package com.etroya.model;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,7 +11,9 @@ import java.util.Map;
 /**
  * Created by Adam on 2015-06-13.
  */
+@Entity
 public class Station {
+    @Id
     private long id;
 
     private String name;

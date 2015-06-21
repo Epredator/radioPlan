@@ -1,5 +1,7 @@
 package com.etroya.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
@@ -9,9 +11,10 @@ import java.util.Map;
 /**
  * Created by Adam on 2015-05-31.
  */
+@Entity
 @XmlRootElement
 public class Program {
-
+    @Id
     private long id;
     private String name;
     private Date startDate;

@@ -1,11 +1,15 @@
 package com.etroya.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * Created by Adam on 2015-06-12.
  */
+@Entity
 public class Comment {
+    @Id
     private long id;
     private String message;
     private Date created;

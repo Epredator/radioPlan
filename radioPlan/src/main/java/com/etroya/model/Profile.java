@@ -1,13 +1,16 @@
 package com.etroya.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by Adam on 2015-06-03.
  */
-
+@Entity
 @XmlRootElement
 public class Profile {
+    @Id
     private long id;
     private String profileName;
     private String firstName;

@@ -8,15 +8,17 @@
       <property name="dialect"> org.hibernate.dialect.PostgreSQLDialect</property>
       <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
       <property name="show_sql">true</property>
-      <property name="hbm2ddl.auto">create</property>
       <property name="connection.pool_size">1</property>
       <property name="connection.url">jdbc:postgresql://localhost:5432/hibernateDB</property>
-    <property name="connection.username">epredator</property>
-    <property name="connection.password">epredato</property>
+      <property name="connection.username">epredator</property>
+      <property name="connection.password">epredato</property>
       <property name="javax.persistence.validation.mode">none</property>
+      <property name="hbm2ddl.auto">create</property>
 
       <!--<mapping package="com.etroya.model"/>-->
       <mapping class="com.etroya.model.Profile"/>
+      <!--<mapping class="com.etroya.model.Program"/>-->
+      <mapping class="com.etroya.model.Event"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @XmlRootElement
 public class Profile {
-    @Id
+    @Id @GeneratedValue
     private long id;
     private String profileName;
     private String firstName;
@@ -18,8 +18,18 @@ public class Profile {
     @Temporal(TemporalType.DATE)
     private Date joinDate;
     private String email;
+    private Address address;
+
     @Lob
     private String description;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Profile(){
     }

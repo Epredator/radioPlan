@@ -18,18 +18,43 @@ public class Profile {
     @Temporal(TemporalType.DATE)
     private Date joinDate;
     private String email;
-    private Address address;
+    @Embedded
+//    @AttributeOverrides({
+//            @AttributeOverride (name="street", column = @Column(name="HOME_STREET_NAME")),
+//            @AttributeOverride (name="city", column = @Column(name="CITY_STREET_NAME")),
+//            @AttributeOverride (name="country", column = @Column(name="COUNTRY_STREET_NAME")),
+//            @AttributeOverride (name="code", column = @Column(name="CODE_STREET_NAME"))
+//    })
+    private Address homeAddress;
+    @Embedded
+    private Address officeAddress;
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public Address getOfficeAddress() {
+        return officeAddress;
+    }
+
+    public void setOfficeAddress(Address officeAddress) {
+        this.officeAddress = officeAddress;
+    }
 
     @Lob
     private String description;
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+//    public Address getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Address address) {
+//        this.address = address;
+//    }
 
     public Profile(){
     }

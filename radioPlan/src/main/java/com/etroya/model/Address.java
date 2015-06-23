@@ -1,5 +1,6 @@
 package com.etroya.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
@@ -7,9 +8,13 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class Address {
+    @Column(name="CITY_STREET")
     private String street;
+    @Column(name="CITY_NAME")
     private String city;
+    @Column(name="CITY_COUNTRY")
     private String country;
+    @Column(name="CITY_CODE")
     private String code;
 
     public String getCode() {

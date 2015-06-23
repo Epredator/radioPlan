@@ -24,7 +24,7 @@ public class HibernateUtil {
         addr.setStreet("Francuska");
         addr.setCountry("Poland");
         addr.setCode("00-001");
-        profile.setAddress(addr);
+        profile.setHomeAddress(addr);
 
         org.hibernate.SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session =sessionFactory.openSession();

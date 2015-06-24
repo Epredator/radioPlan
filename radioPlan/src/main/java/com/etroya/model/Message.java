@@ -1,5 +1,6 @@
 package com.etroya.model;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,7 +18,9 @@ public class Message {
     private String message;
     private Date created;
     private String author;
+    @ElementCollection
     private List<Link> links = new ArrayList<>();
+    @ElementCollection
     private Map<Long, Comment> comments = new HashMap<>();
 
     public List<Link> getLinks() {

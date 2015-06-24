@@ -1,8 +1,11 @@
 package com.etroya.model;
 
+import javax.persistence.Embeddable;
+
 /**
  * Created by Adam on 2015-06-17.
  */
+@Embeddable
 public class Link {
     private String link;
     private String rel;

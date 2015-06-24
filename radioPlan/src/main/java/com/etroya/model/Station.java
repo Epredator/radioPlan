@@ -4,9 +4,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlTransient;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Adam on 2015-06-13.
@@ -15,12 +13,22 @@ import java.util.Map;
 public class Station {
     @Id
     private long id;
-
     private String name;
     private Date startDate;
     private Date endDate;
-    private Map<Long, Program> programs = new HashMap<>();
-    private Map<Long, Comment> comments = new HashMap<>();
+
+    public Set<Program> getPrograms() {
+        return programs;
+    }
+
+    public void setPrograms(Set<Program> programs) {
+        this.programs = programs;
+    }
+
+    @ElementCollection
+    private Set<Program> programs = new HashSet<>();
+//    @ElementCollection
+//    private Map<Long, Comment> comments = new HashMap<>();
 
     public Station(){
 
@@ -65,20 +73,20 @@ public class Station {
         this.endDate = endDate;
     }
 
-    @XmlTransient
-    public Map<Long, Program> getPrograms(){
-        return programs;
-    }
+//    @XmlTransient
+//    public Map<Long, Program> getPrograms(){
+//        return programs;
+//    }
+//
+//    public void setPrograms(Map<Long, Program> programs){
+//        this.programs = programs;
+//    }
 
-    public void setPrograms(Map<Long, Program> programs){
-        this.programs = programs;
-    }
-
-    public Map<Long, Comment> getComments(){
-        return comments;
-    }
-
-    public void setComments(Map<Long, Comment> comments){
-        this.comments = comments;
-    }
+//    public Map<Long, Comment> getComments(){
+//        return comments;
+//    }
+//
+//    public void setComments(Map<Long, Comment> comments){
+//        this.comments = comments;
+//    }
 }

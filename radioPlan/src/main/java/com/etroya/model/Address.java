@@ -2,6 +2,7 @@ package com.etroya.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 
 /**
  * Created by Adam on 2015-06-23.

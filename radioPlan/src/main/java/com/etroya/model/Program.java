@@ -1,5 +1,7 @@
 package com.etroya.model;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,7 +13,7 @@ import java.util.Map;
 /**
  * Created by Adam on 2015-05-31.
  */
-@Entity
+@Embeddable
 @XmlRootElement
 public class Program {
     @Id
@@ -19,8 +21,9 @@ public class Program {
     private String name;
     private Date startDate;
     private Date endDate;
-    private String station;
-    private Map<Long, Comment> comments = new HashMap<>();
+//    private String station;
+//    @ElementCollection
+//    private Map<Long, Comment> comments = new HashMap<>();
 
     public Program(){
 
@@ -31,7 +34,7 @@ public class Program {
         this.name = nameOfProgram;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.station = stationName;
+//        this.station = stationName;
     }
 
     public long getId() {
@@ -66,21 +69,21 @@ public class Program {
         this.endDate = endDate;
     }
 
-    public String getStation() {
-        return station;
-    }
+//    public String getStation() {
+//        return station;
+//    }
+//
+//    public void setStation(String station) {
+//        this.station = station;
+//    }
 
-    public void setStation(String station) {
-        this.station = station;
-    }
-
-    @XmlTransient
-    public Map<Long, Comment> getComments(){
-        return comments;
-    }
-
-    public void setComments(Map<Long, Comment> comments){
-        this.comments = comments;
-    }
+//    @XmlTransient
+//    public Map<Long, Comment> getComments(){
+//        return comments;
+//    }
+//
+//    public void setComments(Map<Long, Comment> comments){
+//        this.comments = comments;
+//    }
 
 }

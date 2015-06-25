@@ -16,19 +16,10 @@ public class Station {
     private String name;
     private Date startDate;
     private Date endDate;
-
-    public Set<Program> getPrograms() {
-        return programs;
-    }
-
-    public void setPrograms(Set<Program> programs) {
-        this.programs = programs;
-    }
-
     @ElementCollection
-    private Set<Program> programs = new HashSet<>();
-//    @ElementCollection
-//    private Map<Long, Comment> comments = new HashMap<>();
+    private List<Comment> comments = new ArrayList<>();
+    @ElementCollection
+    private List<Program> programs = new ArrayList<>();
 
     public Station(){
 

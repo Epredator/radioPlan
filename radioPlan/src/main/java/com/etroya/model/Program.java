@@ -5,15 +5,12 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Adam on 2015-05-31.
  */
-@Embeddable
+@Entity
 @XmlRootElement
 public class Program {
     @Id
@@ -21,9 +18,9 @@ public class Program {
     private String name;
     private Date startDate;
     private Date endDate;
-//    private String station;
-//    @ElementCollection
-//    private Map<Long, Comment> comments = new HashMap<>();
+    private String station;
+    @ElementCollection
+    private List<Comment> comments = new ArrayList<>();
 
     public Program(){
 

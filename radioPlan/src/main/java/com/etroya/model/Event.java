@@ -11,7 +11,6 @@ import java.util.Date;
 public class Event {
     @Id
     private Long id;
-
     private String title;
     private Date date;
 

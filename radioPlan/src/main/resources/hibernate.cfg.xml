@@ -16,11 +16,15 @@
       <property name="hbm2ddl.auto">create</property>
 
       <!--<mapping package="com.etroya.model"/>-->
-      <!--<mapping class="com.etroya.model.Profile"/>-->
-
-      <!--<mapping class="com.etroya.model.Program"/>-->
+      <mapping class="com.etroya.model.Address"/>
+      <mapping class="com.etroya.model.Comment"/>
+      <mapping class="com.etroya.model.Event"/>
+      <mapping class="com.etroya.model.Link"/>
+      <mapping class="com.etroya.model.Message"/>
+      <mapping class="com.etroya.model.Profile"/>
+      <mapping class="com.etroya.model.Program"/>
       <mapping class="com.etroya.model.Station"/>
-    <!-- DB schema will be updated if needed -->
+      <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

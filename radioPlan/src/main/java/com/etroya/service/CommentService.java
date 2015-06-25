@@ -20,10 +20,10 @@ public class CommentService {
     private Map<Long, Message> messages = DatabaseClass.getMessages();
 
 
-    public List<Comment> getAllComments(long messageId){
-       Map<Long, Comment> comments = messages.get(messageId).getComments();
-        return new ArrayList<Comment>(comments.values());
-    }
+//    public List<Comment> getAllComments(long messageId){
+//       Map<Long, Comment> comments = messages.get(messageId).getComments();
+//        return new ArrayList<Comment>(comments.values());
+//    }
 
 //    public List<Comment> getAllMessagesForYear(int year){
 //        List<Comment> commentsForYear = new ArrayList<>();
@@ -41,43 +41,43 @@ public class CommentService {
 //        return list.subList(start, start+size);
 //    }
 
-    public Comment getComment(long messageId, long commentId){
-        Message msg = messages.get(messageId);
-        ErrorMessage errorMessage = new ErrorMessage("Not found", 404, "http://etroya.pl");
-        Response resp = Response.status(Response.Status.NOT_FOUND)
-                .entity(errorMessage).build();
-        if(msg == null){
-            throw new WebApplicationException(resp);
-        }
-        Map<Long, Comment> comments = messages.get(messageId).getComments();
-        Comment comm = comments.get(commentId);
-        if(comm == null){
-            throw new NotFoundException(resp);
-        }
-        return comments.get(commentId);
-    }
+//    public Comment getComment(long messageId, long commentId){
+//        Message msg = messages.get(messageId);
+//        ErrorMessage errorMessage = new ErrorMessage("Not found", 404, "http://etroya.pl");
+//        Response resp = Response.status(Response.Status.NOT_FOUND)
+//                .entity(errorMessage).build();
+//        if(msg == null){
+//            throw new WebApplicationException(resp);
+//        }
+//        Map<Long, Comment> comments = messages.get(messageId).getComments();
+//        Comment comm = comments.get(commentId);
+//        if(comm == null){
+//            throw new NotFoundException(resp);
+//        }
+//        return comments.get(commentId);
+//    }
 
-    public Comment addComment(long messageId, Comment comment){
-        Map<Long, Comment> comments = messages.get(messageId).getComments();
-        comment.setId(comments.size()+1);
-        comments.put(comment.getId(), comment);
-        return comment;
-    }
-
-    public Comment updateComment(long messageId, Comment comment){
-        Map<Long, Comment> comments = messages.get(messageId).getComments();
-        if(comment.getId() <= 0){
-            return null;
-        }else{
-            comments.put(comment.getId(), comment);
-            return comment;
-        }
-    }
-
-    public Comment removeComment(long messageId, long commentId){
-        Map<Long, Comment> comments = messages.get(messageId).getComments();
-        return comments.remove(commentId);
-    }
+//    public Comment addComment(long messageId, Comment comment){
+//        Map<Long, Comment> comments = messages.get(messageId).getComments();
+//        comment.setId(comments.size()+1);
+//        comments.put(comment.getId(), comment);
+//        return comment;
+//    }
+//
+//    public Comment updateComment(long messageId, Comment comment){
+//        Map<Long, Comment> comments = messages.get(messageId).getComments();
+//        if(comment.getId() <= 0){
+//            return null;
+//        }else{
+//            comments.put(comment.getId(), comment);
+//            return comment;
+//        }
+//    }
+//
+//    public Comment removeComment(long messageId, long commentId){
+//        Map<Long, Comment> comments = messages.get(messageId).getComments();
+//        return comments.remove(commentId);
+//    }
 
 
 }

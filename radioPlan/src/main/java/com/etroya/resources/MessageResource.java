@@ -57,9 +57,9 @@ public class MessageResource {
         if (message == null){
             throw new DataNotFoundException("Message with id: " + id + " doesn't found.");
         }
-        message.addLink(getUriForSelf(uriInfo, message), "self");
-        message.addLink(getUriForProfile(uriInfo, message), "profile");
-        message.addLink(getUriForComments(uriInfo, message), "profile");
+//        message.addLink(getUriForSelf(uriInfo, message), "self");
+//        message.addLink(getUriForProfile(uriInfo, message), "profile");
+//        message.addLink(getUriForComments(uriInfo, message), "profile");
         return message;
     }
 

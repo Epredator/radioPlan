@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Adam on 2015-06-12.
  */
-@Embeddable
+@Entity
 public class Comment {
     @Id
     private long id;

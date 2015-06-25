@@ -21,7 +21,7 @@ public class Message {
     @ElementCollection
     private List<Link> links = new ArrayList<>();
     @ElementCollection
-    private Map<Long, Comment> comments = new HashMap<>();
+    private List<Comment> comments = new ArrayList<>();
 
     public List<Link> getLinks() {
         return links;
@@ -75,19 +75,19 @@ public class Message {
         this.author = author;
     }
 
-    @XmlTransient
-    public Map<Long, Comment> getComments(){
-        return comments;
-    }
-
-    public void setComments(Map<Long, Comment> comments){
-        this.comments = comments;
-    }
-
-    public void addLink(String url, String rel){
-        Link link = new Link();
-        link.setLink(url);
-        link.setRel(rel);
-        links.add(link);
-    }
+//    @XmlTransient
+//    public Map<Long, Comment> getComments(){
+//        return comments;
+//    }
+//
+//    public void setComments(Map<Long, Comment> comments){
+//        this.comments = comments;
+//    }
+//
+//    public void addLink(String url, String rel){
+//        Link link = new Link();
+//        link.setLink(url);
+//        link.setRel(rel);
+//        links.add(link);
+//    }
 }

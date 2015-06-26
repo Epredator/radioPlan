@@ -2,7 +2,9 @@ package com.etroya.model;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Adam on 2015-06-03.
@@ -17,35 +19,22 @@ public class Profile {
     private String firstName;
     private String lastName;
     @ElementCollection
-    private List<Address> listOfAddresses = new ArrayList<>();
+    private Set<Address> listOfAddresses = new HashSet<>();
     @Lob
     private String description;
     @Temporal(TemporalType.DATE)
     private Date joinDate;
     private String email;
 
-    public List<Address> getListOfAddresses() {
+    public Profile(){
+    }
+
+    public Set<Address> getListOfAddresses() {
         return listOfAddresses;
     }
 
-    public void setListOfAddresses(List<Address> listOfAddresses) {
+    public void setListOfAddresses(Set<Address> listOfAddresses) {
         this.listOfAddresses = listOfAddresses;
-    }
-
-
-
-
-
-
-//    public Address getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(Address address) {
-//        this.address = address;
-//    }
-
-    public Profile(){
     }
 
     public Profile(long id, String profileName, String firstName, String lastName){

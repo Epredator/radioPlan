@@ -19,6 +19,7 @@ public class Profile {
     private String firstName;
     private String lastName;
     @ElementCollection
+//    @JoinTable(name = "USER_ADDRESS")
     private Set<Address> listOfAddresses = new HashSet<>();
     @Lob
     private String description;

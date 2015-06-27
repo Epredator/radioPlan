@@ -1,10 +1,12 @@
 package com.etroya.model;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Adam on 2015-06-03.
@@ -20,7 +22,9 @@ public class Profile {
     private String lastName;
     @ElementCollection
 //    @JoinTable(name = "USER_ADDRESS")
-    private Set<Address> listOfAddresses = new HashSet<>();
+    @GenericGenerator(name = "hilo-gen", strategy = "hilo")
+    @CollectionId(columns = {@Column(name = "ADDRESS_ID")}, generator = "hilo-gen", type = @Type(type = "long"))
+    private Collection<Address> listOfAddresses = new ArrayList<>();
     @Lob
     private String description;
     @Temporal(TemporalType.DATE)
@@ -30,11 +34,11 @@ public class Profile {
     public Profile(){
     }
 
-    public Set<Address> getListOfAddresses() {
+    public Collection<Address> getListOfAddresses() {
         return listOfAddresses;
     }
 
-    public void setListOfAddresses(Set<Address> listOfAddresses) {
+    public void setListOfAddresses(Collection<Address> listOfAddresses) {
         this.listOfAddresses = listOfAddresses;
     }
 

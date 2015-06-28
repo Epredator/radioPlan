@@ -20,7 +20,7 @@ public class Profile {
     private String profileName;
     private String firstName;
     private String lastName;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
 //    @JoinTable(name = "USER_ADDRESS")
     @GenericGenerator(name = "hilo-gen", strategy = "hilo")
     @CollectionId(columns = {@Column(name = "ADDRESS_ID")}, generator = "hilo-gen", type = @Type(type = "long"))

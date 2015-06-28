@@ -2,6 +2,7 @@ package com.etroya.database;
 
 import com.etroya.model.Address;
 import com.etroya.model.Profile;
+import org.eclipse.persistence.sessions.factories.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
@@ -46,5 +47,12 @@ public class HibernateUtil {
         session.beginTransaction();
         profile = (Profile) session.get(Profile.class, 1L);
         System.out.println("Profile name retrived is " + profile.getProfileName());
+
+        session.close();
+        profile = null;
+        session = sessionFactory.openSession();
+        profile = (Profile) session.get(Profile.class, 1);
+        session.close();
+        System.out.println(profile.getListOfAddresses().size());
     }
 }

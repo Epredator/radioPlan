@@ -2,6 +2,8 @@ package com.etroya.database;
 
 import com.etroya.model.Address;
 import com.etroya.model.Profile;
+import com.etroya.model.Program;
+import com.etroya.model.Station;
 import org.eclipse.persistence.sessions.factories.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
@@ -49,10 +51,22 @@ public class HibernateUtil {
         System.out.println("Profile name retrived is " + profile.getProfileName());
 
         session.close();
-        profile = null;
+
         session = sessionFactory.openSession();
-        profile = (Profile) session.get(Profile.class, 1);
-        session.close();
+        profile = (Profile) session.get(Profile.class, 1L);
         System.out.println(profile.getListOfAddresses().size());
+        session.close();
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        Station station = new Station();
+        Program program = new Program();
+
+        station.setName("Polskie Radio Czwórka");
+        program.setName("Podsiadówka");
+
+        session.save(station);
+        session.save(program);
+        session.getTransaction().commit();
+        session.close();
     }
 }

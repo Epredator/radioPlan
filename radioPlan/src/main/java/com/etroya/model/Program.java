@@ -1,9 +1,6 @@
 package com.etroya.model;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.*;
 
@@ -13,7 +10,7 @@ import java.util.*;
 @Entity
 @XmlRootElement
 public class Program {
-    @Id
+    @Id @GeneratedValue
     private long id;
     private String name;
     private Date startDate;

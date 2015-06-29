@@ -1,8 +1,6 @@
 package com.etroya.model;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.*;
 
@@ -11,11 +9,14 @@ import java.util.*;
  */
 @Entity
 public class Station {
-    @Id
+    @Id @GeneratedValue
     private long id;
     private String name;
     private Date startDate;
     private Date endDate;
+    @OneToOne
+//    @JoinColumn(name = "PROGRAM_ID")
+    private Program program = new Program();
     @ElementCollection
     private List<Comment> comments = new ArrayList<>();
     @ElementCollection
@@ -30,6 +31,14 @@ public class Station {
         this.name = nameOfStation;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public Program getProgram() {
+        return program;
+    }
+
+    public void setProgram(Program program) {
+        this.program = program;
     }
 
     public long getId() {

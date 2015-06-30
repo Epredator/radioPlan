@@ -15,9 +15,10 @@ public class Program {
     private String name;
     private Date startDate;
     private Date endDate;
-    private String station;
-    @ElementCollection
-    private List<Comment> comments = new ArrayList<>();
+    @OneToMany
+    private Collection<Comment> comments = new ArrayList<>();
+    @ManyToOne
+    private Station station = new Station();
 
     public Program(){
 
@@ -29,6 +30,22 @@ public class Program {
         this.startDate = startDate;
         this.endDate = endDate;
 //        this.station = stationName;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
     }
 
     public long getId() {

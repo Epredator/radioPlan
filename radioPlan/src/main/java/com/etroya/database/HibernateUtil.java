@@ -60,9 +60,14 @@ public class HibernateUtil {
         session.beginTransaction();
         Station station = new Station();
         Program program = new Program();
+        Program program2 = new Program();
 
         station.setName("Polskie Radio Czwórka");
         program.setName("Podsiadówka");
+        program2.setName("Numer raz na fali");
+        station.getPrograms().add(program);
+        station.getPrograms().add(program2);
+        program.setStation(station);
 
         session.save(station);
         session.save(program);

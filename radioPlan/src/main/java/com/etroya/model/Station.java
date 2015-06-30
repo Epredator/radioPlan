@@ -14,13 +14,11 @@ public class Station {
     private String name;
     private Date startDate;
     private Date endDate;
-    @OneToOne
-//    @JoinColumn(name = "PROGRAM_ID")
-    private Program program = new Program();
-    @ElementCollection
-    private List<Comment> comments = new ArrayList<>();
-    @ElementCollection
-    private List<Program> programs = new ArrayList<>();
+    @OneToMany
+    private Collection<Program> programs = new ArrayList<>();
+    @OneToMany
+    private Collection<Comment> comments = new ArrayList<>();
+
 
     public Station(){
 
@@ -33,12 +31,22 @@ public class Station {
         this.endDate = endDate;
     }
 
-    public Program getProgram() {
-        return program;
+
+
+    public Collection<Program> getPrograms() {
+        return programs;
     }
 
-    public void setProgram(Program program) {
-        this.program = program;
+    public void setPrograms(Collection<Program> programs) {
+        this.programs = programs;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
     }
 
     public long getId() {

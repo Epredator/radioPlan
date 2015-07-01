@@ -68,6 +68,8 @@ public class HibernateUtil {
         station.getPrograms().add(program);
         station.getPrograms().add(program2);
         program.setStation(station);
+        station.getProfiles().add(profile);
+        program.getProfiles().add(profile);
 
         session.save(station);
         session.save(program);

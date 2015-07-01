@@ -19,9 +19,19 @@ public class Program {
     private Collection<Comment> comments = new ArrayList<>();
     @ManyToOne
     private Station station = new Station();
+    @ManyToMany
+    private Collection<Profile> profiles = new ArrayList<>();
 
     public Program(){
 
+    }
+
+    public Collection<Profile> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(Collection<Profile> profiles) {
+        this.profiles = profiles;
     }
 
     public Program(int i, String nameOfProgram, Date startDate, Date endDate, String stationName) {

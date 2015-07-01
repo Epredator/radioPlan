@@ -30,6 +30,10 @@ public class Profile {
     @Temporal(TemporalType.DATE)
     private Date joinDate;
     private String email;
+    @ManyToMany
+    private Collection<Station> stations = new ArrayList<>();
+    @ManyToMany
+    private Collection<Program> programs = new ArrayList<>();
 
     public Profile(){
     }
@@ -47,6 +51,22 @@ public class Profile {
         this.profileName = profileName;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Collection<Station> getStations() {
+        return stations;
+    }
+
+    public void setStations(Collection<Station> stations) {
+        this.stations = stations;
+    }
+
+    public Collection<Program> getPrograms() {
+        return programs;
+    }
+
+    public void setPrograms(Collection<Program> programs) {
+        this.programs = programs;
     }
 
     public Date getJoindedDate() {

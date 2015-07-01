@@ -14,10 +14,12 @@ public class Station {
     private String name;
     private Date startDate;
     private Date endDate;
-    @OneToMany
+    @OneToMany(mappedBy = "station" )
     private Collection<Program> programs = new ArrayList<>();
     @OneToMany
     private Collection<Comment> comments = new ArrayList<>();
+    @ManyToMany
+    private Collection<Profile> profiles = new ArrayList<>();
 
 
     public Station(){
@@ -31,7 +33,13 @@ public class Station {
         this.endDate = endDate;
     }
 
+    public Collection<Profile> getProfiles() {
+        return profiles;
+    }
 
+    public void setProfiles(Collection<Profile> profiles) {
+        this.profiles = profiles;
+    }
 
     public Collection<Program> getPrograms() {
         return programs;

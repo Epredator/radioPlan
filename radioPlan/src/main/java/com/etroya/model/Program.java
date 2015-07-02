@@ -1,5 +1,8 @@
 package com.etroya.model;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.*;
@@ -15,9 +18,10 @@ public class Program {
     private String name;
     private Date startDate;
     private Date endDate;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Collection<Comment> comments = new ArrayList<>();
     @ManyToOne
+    @NotFound(action= NotFoundAction.IGNORE)
     private Station station = new Station();
     @ManyToMany
     private Collection<Profile> profiles = new ArrayList<>();

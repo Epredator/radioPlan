@@ -71,8 +71,8 @@ public class HibernateUtil {
         station.getProfiles().add(profile);
         program.getProfiles().add(profile);
 
-        session.save(station);
-        session.save(program);
+        session.persist(station);
+        session.persist(program);
         session.getTransaction().commit();
         session.close();
     }

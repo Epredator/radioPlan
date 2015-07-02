@@ -30,9 +30,9 @@ public class Profile {
     @Temporal(TemporalType.DATE)
     private Date joinDate;
     private String email;
-    @ManyToMany
+    @ManyToMany(mappedBy = "profiles")
     private Collection<Station> stations = new ArrayList<>();
-    @ManyToMany
+    @ManyToMany(mappedBy = "profiles")
     private Collection<Program> programs = new ArrayList<>();
 
     public Profile(){

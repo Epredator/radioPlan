@@ -1,9 +1,6 @@
 package com.etroya.database;
 
-import com.etroya.model.Address;
-import com.etroya.model.Profile;
-import com.etroya.model.Program;
-import com.etroya.model.Station;
+import com.etroya.model.*;
 import org.eclipse.persistence.sessions.factories.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
@@ -71,8 +68,16 @@ public class HibernateUtil {
         station.getProfiles().add(profile);
         program.getProfiles().add(profile);
 
+        Advertisement advert1 = new Advertisement();
+        advert1.setName("Colgate advertisement");
+        advert1.setStation(station);
+        advert1.setProducer("Colgate");
+        advert1.setProductName("Colgate");
+
+
         session.persist(station);
         session.persist(program);
+        session.save(advert1);
         session.getTransaction().commit();
         session.close();
     }

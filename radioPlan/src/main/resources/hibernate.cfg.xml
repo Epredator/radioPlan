@@ -24,6 +24,8 @@
       <mapping class="com.etroya.model.Profile"/>
       <mapping class="com.etroya.model.Program"/>
       <mapping class="com.etroya.model.Station"/>
+      <mapping class="com.etroya.model.Advertisement"/>
+      <mapping class="com.etroya.model.Announcement"/>
       <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

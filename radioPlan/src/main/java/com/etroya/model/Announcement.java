@@ -1,12 +1,14 @@
 package com.etroya.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 /**
  * Created by Adam on 2015-07-03.
  * zapowiedz audycji radiowych.
  */
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorValue("Announ")
 public class Announcement extends Program {
     String description;
 

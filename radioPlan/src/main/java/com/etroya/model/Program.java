@@ -12,6 +12,10 @@ import java.util.*;
  */
 @Entity
 @XmlRootElement
+@DiscriminatorColumn(
+//        name = "PROGRAM_TYPE",
+        discriminatorType = DiscriminatorType.STRING
+)
 public class Program {
     @Id @GeneratedValue
     private long id;

@@ -1,5 +1,6 @@
 package com.etroya.model;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
  * reklama produktu
  */
 @Entity
+@DiscriminatorValue("Advert")
 public class Advertisement extends Program  {
     String productName;
     String producer;

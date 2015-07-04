@@ -7,7 +7,7 @@ import javax.persistence.*;
  * zapowiedz audycji radiowych.
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue("Announ")
 public class Announcement extends Program {
     String description;

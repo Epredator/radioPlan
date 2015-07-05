@@ -14,6 +14,7 @@ import java.util.*;
 
 @XmlRootElement
 @Entity
+@org.hibernate.annotations.Entity(selectBeforeUpdate = true)
 public class Profile {
     @Id @GeneratedValue
     private long id;

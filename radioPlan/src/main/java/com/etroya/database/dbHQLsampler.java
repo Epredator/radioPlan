@@ -1,5 +1,6 @@
 package com.etroya.database;
 
+import com.etroya.model.Profile;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -16,13 +17,15 @@ public class dbHQLsampler {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Query query = session.createQuery("from Profile where id > 5");
-        List users = query.list();
-
-
-//        session.save();
+        Query query = session.createQuery("select new map(id, profileName)  from Profile");
+//        Query queryOtherSample = session.createQuery("select max(profileName)  from Profile");
+        query.setFirstResult(5);
+        query.setMaxResults(4); //maximum number of records (use this to paginate)
+        List<String> profileNames = (List<String>) query.list();
         session.getTransaction().commit();
         session.close();
-        System.out.println("Size of user list:" + users.size() );
+
+        for (String p : profileNames)
+            System.out.println(p);
     }
 }

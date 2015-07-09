@@ -6,7 +6,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created by Adam on 2015-06-03.
@@ -14,11 +16,14 @@ import java.util.*;
 
 @XmlRootElement
 @Entity
+@NamedQuery(name="Profile.byId", query = "from Profile where id = ?")
+//@NamedNativeQuery(name="ProfileDetails.byName", query = "select * from profile where profilename = ?", resultClass = Profile.class);
 @org.hibernate.annotations.Entity(selectBeforeUpdate = true)
+
 public class Profile {
+    private String profileName;
     @Id @GeneratedValue
     private long id;
-    private String profileName;
     private String firstName;
     private String lastName;
     @ElementCollection(fetch = FetchType.EAGER)

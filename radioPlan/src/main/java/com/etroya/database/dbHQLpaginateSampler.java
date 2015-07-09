@@ -18,9 +18,9 @@ public class dbHQLpaginateSampler {
         session.beginTransaction();
         String minProfileId = "5";
         String lastName = "9Botlowski";
-        Query query = session.createQuery("from Profile where id > :setId and  lastName = :setLastName");
-        query.setInteger("setId", Integer.parseInt(minProfileId));
-        query.setString("setLastName", lastName);
+        Query query = session.getNamedQuery("Profile.byId");
+        query.setInteger(0, Integer.parseInt(minProfileId));
+//        query.setString("setLastName", lastName);
 
         List<Profile> profiles = (List<Profile>) query.list();
         session.getTransaction().commit();

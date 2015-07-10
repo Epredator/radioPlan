@@ -18,9 +18,13 @@ public class dbCriteriaAPIhqlsampler {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Profile.class);
-        criteria.add(Restrictions.eq("profileName", "9Botlowski"));
-        List<Profile> profiles = (List<Profile>) criteria.list();
+        criteria.add(Restrictions.or(
+                Restrictions.like("profileName", "%Botlowski%"),
+                Restrictions.gt("id", 5L)
+                )
+        );
 
+        List<Profile> profiles = (List<Profile>) criteria.list();
         session.getTransaction().commit();
         session.close();
 

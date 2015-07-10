@@ -5,6 +5,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
@@ -28,10 +30,21 @@ public class dbCriteriaAPIhqlsampler {
 //                .setProjection(Projections.property("userId")); //pobieranie jedynie kolumny które chcemy a nie całego obiektu
 
 //        Criteria criteria = session.createCriteria(Profile.class)
-//                .setProjection(Projections.max("userId")); //pobieranie jedynie kolumny które chcemy a nie całego obiektu
+//                .setProjection(Projections.max("userId"));
+
+//        Criteria criteria = session.createCriteria(Profile.class)
+//                .setProjection(Projections.count("userId"));
+
+//        Criteria criteria = session.createCriteria(Profile.class)
+//                .addOrder(Order.desc("id"));
+
+        Profile exampleProfile = new Profile();
+        exampleProfile.setProfileName("Botlowski9");
+        Example example = Example.create(exampleProfile);
+
 
         Criteria criteria = session.createCriteria(Profile.class)
-                .setProjection(Projections.count("userId")); //pobieranie jedynie kolumny które chcemy a nie całego obiektu
+                .add(example);
 
 
         List<Profile> profiles = (List<Profile>) criteria.list();

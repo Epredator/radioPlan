@@ -6,9 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -39,8 +36,8 @@ public class dbCriteriaAPIhqlsampler {
 //                .addOrder(Order.desc("id"));
 
         Profile exampleProfile = new Profile();
-        exampleProfile.setProfileName("Botlowski9");
-        Example example = Example.create(exampleProfile);
+        exampleProfile.setProfileName("Botlowski");
+        Example example = Example.create(exampleProfile).enableLike();
 
 
         Criteria criteria = session.createCriteria(Profile.class)

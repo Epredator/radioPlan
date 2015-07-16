@@ -1,10 +1,11 @@
 package com.etroya.model;
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.NamedNativeQuery;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +17,8 @@ import java.util.Date;
 
 @XmlRootElement
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage= CacheConcurrencyStrategy.READ_WRITE)
 @NamedQuery(name="Profile.byId", query = "from Profile where id = ?")
 //@NamedNativeQuery(name="ProfileDetails.byName", query = "select * from profile where profilename = ?", resultClass = Profile.class);
 @org.hibernate.annotations.Entity(selectBeforeUpdate = true)

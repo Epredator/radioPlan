@@ -1,0 +1,1 @@
+przykładowe zmiany test integracji svn i git

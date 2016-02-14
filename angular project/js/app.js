@@ -1,15 +1,15 @@
 var myApp = angular.module('myApp', [
   'ngRoute',
-  'myAppControllers'
+  'artistControllers'
 ]);
 
-myApp.config(['$routeProvider', function($routeProvider){
+myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-  when('/list'), {
+  when('/list', {
     templateUrl: 'partials/list.html',
     controller: 'ListController'
   }).
-  when('/details/:itemId',) {
+  when('/details/:itemId', {
     templateUrl: 'partials/details.html',
     controller: 'DetailsController'
   }).

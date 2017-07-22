@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$USER_HOME$/servers/wildfly-11.0.0.Alpha1/bin/radioPlan.ddl" dialect="HSQLDB" />
+  </component>
+</project>

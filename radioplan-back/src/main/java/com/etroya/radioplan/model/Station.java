@@ -18,10 +18,10 @@ public class Station {
     private String title;
     @Column(length = 1000)
     private String description;
-    @Column(name ='start_station_date')
+    @Column(name = "start_station_date")
     @Temporal(TemporalType.DATE)
     private Date startStationDate;
-    @Column(name ='image_url')
+    @Column(name = "image_url")
     private String imageUrl;
     private Language language;
 

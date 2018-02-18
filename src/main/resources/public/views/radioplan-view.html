@@ -1,0 +1,35 @@
+<div class="container pad-top">
+  <table class="table radioplantable">
+      <tr>
+          <td><h3>Details for {{radioplan.name}}</h3></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Name</td>
+          <td>{{radioplan.name}}</td>
+      </tr>
+      <tr>
+          <td>Description</td>
+          <td>{{radioplan.description}}</td>
+      </tr>
+      <tr>
+          <td>Wreck Condition</td>
+          <td>{{radioplan.condition}}</td>
+      </tr>
+      <tr>
+          <td>Year Discovered</td>
+          <td>{{radioplan.yearDiscovered}}</td>
+      </tr>
+      <tr>
+          <td>Depth of Wreck</td>
+          <td>{{radioplan.depth}}</td>
+      </tr>
+      <tr>
+          <td>Location</td>
+          <td>{{radioplan.latitude}}, {{radioplan.longitude}}</td>
+      </tr>
+  </table>
+  <div>
+      <a class="btn btn-primary" ui-sref="editradioplan({id:radioplan.id})">Edit</a>
+  </div>
+</div>

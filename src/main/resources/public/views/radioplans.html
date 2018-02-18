@@ -1,0 +1,18 @@
+<div class="container pad-top">
+  <a ui-sref="newradioplan" class="btn-primary btn-lg nodecoration">Add New radioplan</a>
+  <table class="table radioplantable">
+      <tr>
+          <td><h3>All radioplans</h3></td>
+          <td></td>
+      </tr>
+      <tr ng-repeat="radioplan in radioplans">
+          <td>{{radioplan.name}}</td>
+          <td>{{radioplan.description}}</td>
+          <td>{{radioplan.yearDiscovered}}</td>
+          <td>
+              <a class="btn btn-primary" ui-sref="viewradioplan({id:radioplan.id})">View</a>
+              <a class="btn btn-danger"  ng-click="deleteradioplan(radioplan)">Delete</a>
+          </td>
+      </tr>
+  </table>
+</div>

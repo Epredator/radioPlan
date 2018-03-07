@@ -45,22 +45,22 @@
 					pageTitle: 'Home'
 				}
 			})
-			.state('radioplans',{
-	        url:'/radioplans',
-	        templateUrl: viewsPrefix + 'radioplans.html',
-	        controller:'radioplanListController'
-	    }).state('viewradioplan',{
-	       url:'/radioplans/:id/view',
-	       templateUrl: viewsPrefix + 'radioplan-view.html',
-	       controller:'radioplanViewController'
-	    }).state('newradioplan',{
-	        url:'/radioplans/new',
-	        templateUrl: viewsPrefix + 'radioplan-add.html',
-	        controller:'radioplanCreateController'
-	    }).state('editradioplan',{
-	        url:'/radioplans/:id/edit',
-	        templateUrl: viewsPrefix + 'radioplan-edit.html',
-	        controller:'radioplanEditController'
+			.state('shipwrecks',{
+	        url:'/shipwrecks',
+	        templateUrl: viewsPrefix + 'shipwrecks.html',
+	        controller:'ShipwreckListController'
+	    }).state('viewShipwreck',{
+	       url:'/shipwrecks/:id/view',
+	       templateUrl: viewsPrefix + 'shipwreck-view.html',
+	       controller:'ShipwreckViewController'
+	    }).state('newShipwreck',{
+	        url:'/shipwrecks/new',
+	        templateUrl: viewsPrefix + 'shipwreck-add.html',
+	        controller:'ShipwreckCreateController'
+	    }).state('editShipwreck',{
+	        url:'/shipwrecks/:id/edit',
+	        templateUrl: viewsPrefix + 'shipwreck-edit.html',
+	        controller:'ShipwreckEditController'
 	    })
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',

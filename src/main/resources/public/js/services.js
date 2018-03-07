@@ -1,5 +1,5 @@
-angular.module('app.services', []).factory('radioplan', function($resource) {
-  return $resource('/api/v1/radioplans/:id', { id: '@id' }, {
+angular.module('app.services', []).factory('Shipwreck', function($resource) {
+  return $resource('/api/v1/shipwrecks/:id', { id: '@id' }, {
     update: {
       method: 'PUT'
     }
